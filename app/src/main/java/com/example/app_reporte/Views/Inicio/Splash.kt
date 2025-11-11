@@ -34,7 +34,7 @@ fun SplashScreen(navController: NavController? = null) {
         Spacer(modifier = Modifier.height(40.dp))
 
         Image(
-            painter = painterResource(id = R.drawable.logo),
+            painter = painterResource(id = R.drawable.ic_logo),
             contentDescription = "Mi imagen",
             modifier = Modifier
                 .fillMaxWidth()
@@ -48,5 +48,5 @@ fun SplashScreen(navController: NavController? = null) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewSplash() {
-    SplashScreen()
+    //SplashScreen()
 }

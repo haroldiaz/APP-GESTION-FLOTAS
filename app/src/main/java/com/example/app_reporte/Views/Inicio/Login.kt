@@ -1,154 +1,119 @@
-package com.example.app_reporte.Views.Inicio
-
+package com.example.app_reporte_copia.Views
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.app_reporte.R
-
-// import com.example.app.data.UsuariosDBHelper
-
 @Composable
 fun LoginScreen(navController: NavController? = null) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var cedula by remember { mutableStateOf("") }
+    var contrasena by remember { mutableStateOf("") }
 
-
-    var showDialog by remember { mutableStateOf(false) }
-    var mensajeDialog by remember { mutableStateOf("") }
-
-    //admin
-    val  valUser = "admin"
-    val valPass = "1234"
-    //conductor
-    val con = "con"
-    val pass = "12"
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(60.dp),
-        verticalArrangement = Arrangement.Center
+            .background(Color(0xFFEBEBEB))
+            .padding(6.dp),
+        contentAlignment = Alignment.Center
     ) {
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        Text(
-            text = "NeoFlota",
-            style = MaterialTheme.typography.headlineMedium.copy(
-                fontSize = 28.sp,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold
-            ),
-            color = Color.Blue,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(80.dp))
-
-        Text(
-            text = "Iniciar Sesión",
-            style = MaterialTheme.typography.headlineMedium.copy(
-                fontSize = 18.sp,
-                textAlign = TextAlign.Left
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Correo electrónico") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            label = { Text("Contraseña") },
-            singleLine = true,
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(
-            onClick = {
-                if (email == valUser && password == valPass)
-                {
-                    // Navegación solo
-                    navController?.navigate("MenuPrincipal") {
-                        popUpTo("login") { inclusive = true }
-                    }
-                }
-                else if (email == con && password == pass)
-                {
-                    // Navegación solo
-                    navController?.navigate("MenuConductor") {
-                        popUpTo("MenuPrincipal") { inclusive = true }
-                    }
-                }
-                else{
-
-                    // Si no coincide, muestra error
-                    mensajeDialog = "Usuario o contraseña incorrectos"
-                    showDialog = true
-                }
-
-
-            },
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
             modifier = Modifier
-                .fillMaxWidth()
-                .height(60.dp)
-                .padding(4.dp),
-            shape = RoundedCornerShape(6.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF233D5B),
-                contentColor = Color.White
-            )
+                .fillMaxWidth(0.9f)
+                .padding(2.dp)
         ) {
-            Text("Entrar", fontSize = 18.sp)
-        }
-    }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(20.dp)
+            ) {
 
-    // 🔹 POPUP de confirmación (solo si activas BD)
-    if (showDialog) {
-        AlertDialog(
-            onDismissRequest = { showDialog = false },
-            confirmButton = {
-                TextButton(onClick = { showDialog = false }) {
-                    Text("OK")
+                Image(
+                    painter = painterResource(id = R.drawable.ic_logo),
+                    contentDescription = "Logo NeoFlota",
+                     modifier = Modifier.size(120.dp)
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "NeoFlota",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF0D5C4A)
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = "Ingresa a tu cuenta para gestionar tu flota",
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color.Gray
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                OutlinedTextField(
+                    value = cedula,
+                    onValueChange = { cedula = it },
+                    label = { Text("Ingresa tu cédula") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                OutlinedTextField(
+                    value = contrasena,
+                    onValueChange = { contrasena = it },
+                    label = { Text("Contraseña") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Button(
+                    onClick = { /* TODO: Acción de ingreso */ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF0D5C4A),
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Ingresar", fontSize = 16.sp)
                 }
-            },
-            title = { Text("Registro") },
-            text = { Text(mensajeDialog) }
-        )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "Si no tienes acceso, contacta al administrador de flota",
+                    fontSize = 12.sp,
+                    color = Color.Gray,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+            }
+        }
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewLogin() {
+fun PreviLogin(){
+
     LoginScreen()
 }

@@ -143,5 +143,5 @@ fun ViewMenuConductor(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun previewConductor() {
-    ViewMenuConductor(navController = rememberNavController())
+    //ViewMenuConductor(navController = rememberNavController())
 }

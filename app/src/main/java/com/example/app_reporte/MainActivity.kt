@@ -12,13 +12,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.app_reporte.Views.Administrador.ViewUsuarios
-import com.example.app_reporte.ui.theme.App_reporteTheme
-import com.example.app_reporte.Views.Inicio.LoginScreen
-import com.example.app_reporte.Views.Administrador.MenuPrincipal
-import com.example.app_reporte.Views.Administrador.ViewVehiculos
+
+
+
 import com.example.app_reporte.Views.Conductor.ViewMenuConductor
 import com.example.app_reporte.Views.Inicio.SplashScreen
+import com.example.app_reporte_copia.Views.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,15 +49,15 @@ fun App(){
             //Pantalla Principal Admin
             // 📌 Pantalla 2: MenuPrincipal Administrador
             composable("MenuPrincipal") {
-                MenuPrincipal(navController = navController)
+              //  MenuPrincipal(navController = navController)
             }
             // 📌 Pantalla 2: Ver Usuario
             composable("verUsuarios") {
-                ViewUsuarios(navController = navController)
+               // ViewUsuarios(navController = navController)
             }
             // 📌 Pantalla 3: Ver Vehiculos
             composable("Vehiculos"){
-                ViewVehiculos(navController = navController)
+                //ViewVehiculos(navController = navController)
             }
 
             //-----------------------------------
@@ -72,10 +71,4 @@ fun App(){
         }
     }
 }
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    App_reporteTheme {
-        App()
-    }
-}
+
